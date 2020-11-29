@@ -1,0 +1,25 @@
+name: AdventCalendar
+description: A custom plugin which simulates an Advent Calendar.
+version: 1.0.0-R0.1-SNAPSHOT
+author: Paldiu
+main: com.heldenmc.AdventCalendar
+api-version: 1.16
+
+commands:
+  adventcalendar:
+    description: Opens the Calendar.
+    aliases: [ac, calendar, advc]
+    usage: /<command>
+    permission: adventcalendar.use
+    permission-message: You do not have permission to use this command.
+
+permissions:
+  adventcalendar.*:
+    default: false
+    description: Grants all permissable nodes.
+    children:
+      adventcalendar.use: true
+  adventcalendar.use:
+    description: Allows a player to access the calendar.
+    default: not op
+

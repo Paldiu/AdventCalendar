@@ -1,0 +1,24 @@
+## Each 'number' represents the corresponding day on the advent calendar.
+## You may change these to any material name, so long as it remains UPPERCASE.
+## Materials which contain more than one word for its name must be separated by an UNDERSCORE
+## Example: CHISELED_STONE_BRICK_STAIRS
+
+calendar:
+  day_1:
+    item: PAPER
+    amount: 1
+    enchantments:
+      unbreaking: 3
+  day_2:
+    item: PAPER
+    amount: 1
+    enchantments:
+      luck_of_the_sea: 1
+      sweeping_edge: 3
+      mending: 1
+    lore:
+      - This is a string list
+      - Every new line here is a new line of lore
+      - You can put as many lines as you want
+      - However, the more lines you put
+      - The more cluttered things become.
