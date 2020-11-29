@@ -12,6 +12,7 @@ public class CalendarGUI {
     }
 
     public void openGUI() {
-
+        gui.setItem(0, new Day("day_1").getItem());
+        gui.setItem(1, new Day("day_2").getItem());
     }
 }

@@ -5,20 +5,24 @@
 
 calendar:
   day_1:
-    item: PAPER
+    name: '&3Colored Name Support'
+    item: DARK_OAK_LOG
     amount: 1
     enchantments:
       unbreaking: 3
   day_2:
-    item: PAPER
+    name: '&9Star of David'
+    item: NETHER_STAR
     amount: 1
     enchantments:
       luck_of_the_sea: 1
       sweeping_edge: 3
       mending: 1
     lore:
-      - This is a string list
-      - Every new line here is a new line of lore
-      - You can put as many lines as you want
-      - However, the more lines you put
-      - The more cluttered things become.
+      - '&aThis is a string list'
+      - '&bEvery new line here is a new line of lore'
+      - '&cYou can put as many lines as you want'
+      - '&dHowever, the more lines you put'
+      - '&eThe more cluttered things become.'
+    commands:
+      - 'lp user %player% permission settemp permissable.node true 24H'
