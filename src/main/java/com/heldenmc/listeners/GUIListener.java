@@ -37,6 +37,7 @@ public class GUIListener implements Listener {
                 if ((Utilities.calc(factory.getInitialTime(), factory.getPlayTime()) > 30)
                 && !factory.isSlotUsed(event.getSlot())) {
                     action.click(player);
+                    factory.setSlotUsed(event.getSlot(), true);
                 }
             }
         }
