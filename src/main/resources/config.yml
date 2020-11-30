@@ -1,5 +1,5 @@
 ## Each 'number' represents the corresponding day on the advent calendar.
-## You may change these to any material name, so long as it remains UPPERCASE.
+## You may change these to any material name, so long as it remains in SCREAMING_SNAKE_CASE.
 ## Materials which contain more than one word for its name must be separated by an UNDERSCORE
 ## Example: CHISELED_STONE_BRICK_STAIRS
 
