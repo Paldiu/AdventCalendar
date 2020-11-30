@@ -57,10 +57,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1606574324007" />
-    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1606615934459">
+    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1606759323704">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1606615934459" />
+    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1606759323704" />
+    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606758430102">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1606758430102" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606757550295">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1606757550295" />
     <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1606573846073">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -77,6 +85,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="90" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1606618431680" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1606759315298">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1606759315298" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1606611897645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

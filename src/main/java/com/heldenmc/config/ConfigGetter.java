@@ -12,25 +12,24 @@ import java.util.*;
 
 public class ConfigGetter extends ProjectBase {
     private final ConfigurationSection calendar;
-    private final ConfigurationSection currentDay;
-    private final ConfigurationSection enchants;
+    private final int index;
 
-    public ConfigGetter(String day) {
+    public ConfigGetter(int index) {
+        this.index = index;
         calendar = plugin.config.getConfigurationSection("calendar");
-        currentDay = calendar.getConfigurationSection(day);
-        enchants = currentDay.getConfigurationSection("enchantments");
     }
 
     protected ConfigurationSection getCalendar() {
         return calendar;
     }
 
-    public ConfigurationSection getCurrentDay() {
-        return currentDay;
+    public ConfigurationSection getDay() {
+        List<String> keys = new ArrayList<>(getCalendar().getKeys(false));
+        return getCalendar().getConfigurationSection(keys.get(index));
     }
 
     public ConfigurationSection getEnchants() {
-        return enchants;
+        return getDay().getConfigurationSection("enchants");
     }
 
     public Set<String> enchantmentSet() {
@@ -38,6 +37,9 @@ public class ConfigGetter extends ProjectBase {
     }
 
     public Map<Enchantment, Integer> enchantmentMap() {
+        if (enchantmentSet().isEmpty() || enchantmentSet() == null) {
+            return null;
+        }
         Map<Enchantment, Integer> map = new HashMap<>();
         enchantmentSet().forEach(key -> {
             map.put(Enchantment.getByKey(NamespacedKey.minecraft(key)), getEnchants().getInt(key));
@@ -45,25 +47,27 @@ public class ConfigGetter extends ProjectBase {
         return map;
     }
 
+    // This lets the list be empty without returning null. An empty list here is better than a null one! :)
     public List<String> getLore() {
-        return getCurrentDay().getStringList("lore");
+        return new ArrayList<>(getDay().getStringList("lore"));
     }
 
     public String getName() {
-        return getCurrentDay().getString("name");
+        return getDay().getString("name");
     }
 
     public Integer getAmount() {
-        return getCurrentDay().getInt("amount");
+        return getDay().getInt("amount");
     }
 
     public Material getItem() {
-        return Material.getMaterial(getCurrentDay().getString("item"));
+        return Material.getMaterial(getDay().getString("item"));
     }
 
     public List<String> getCommands(CommandSender sender) {
         List<String> temp = new ArrayList<>();
-        getCurrentDay().getStringList("commands").forEach(command -> {
+        if (!getDay().isList("commands")) { return null; }
+        getDay().getStringList("commands").forEach(command -> {
             if (command.contains("%player%") && (sender instanceof Player)) {
                 command.replace("%player%", sender.getName());
             }

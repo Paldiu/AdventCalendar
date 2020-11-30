@@ -25,4 +25,8 @@ calendar:
       - '&dHowever, the more lines you put'
       - '&eThe more cluttered things become.'
     commands:
-      - 'lp user %player% permission settemp permissable.node true 24H'
+    - 'lp user %player% permission settemp permissable.node true 24H'
+  day_3:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1

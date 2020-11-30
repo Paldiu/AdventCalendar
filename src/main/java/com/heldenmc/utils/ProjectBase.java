@@ -3,6 +3,7 @@ package com.heldenmc.utils;
 import com.heldenmc.AdventCalendar;
 import com.heldenmc.calendar.Command_adventcalendar;
 import com.heldenmc.listeners.GUIListener;
+import com.heldenmc.listeners.PlayerListener;
 import org.bukkit.Server;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,5 +39,6 @@ public class ProjectBase {
 
     public void registerListeners() {
         getManager().registerEvents(new GUIListener(), plugin);
+        getManager().registerEvents(new PlayerListener(), plugin);
     }
 }

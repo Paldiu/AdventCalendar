@@ -1,5 +1,6 @@
 package com.heldenmc;
 
+import com.heldenmc.utils.PlaytimeTracker;
 import com.heldenmc.utils.ProjectBase;
 import com.heldenmc.config.YamlConfig;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,10 +19,13 @@ public class AdventCalendar extends JavaPlugin {
     @Override
     public void onEnable() {
         config = new YamlConfig(this);
+        base.registerCommands();
+        base.registerListeners();
+        base.getScheduler().runTaskTimer(this, new PlaytimeTracker(), 20L * 60 * 5, 20L * 60 * 5);
     }
 
     @Override
     public void onDisable() {
-
+        base.getScheduler().cancelTasks(this);
     }
 }
