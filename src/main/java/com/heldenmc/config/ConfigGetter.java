@@ -12,15 +12,23 @@ import java.util.*;
 
 public class ConfigGetter extends ProjectBase {
     private final ConfigurationSection calendar;
-    private final int index;
+    private int index = 0;
 
-    public ConfigGetter(int index) {
-        this.index = index;
+    public ConfigGetter() {
         calendar = plugin.config.getConfigurationSection("calendar");
+    }
+
+    public ConfigGetter search(int index) {
+        this.index = index;
+        return this;
     }
 
     protected ConfigurationSection getCalendar() {
         return calendar;
+    }
+
+    public int getCalendarSize() {
+        return calendar.getKeys(false).size();
     }
 
     public ConfigurationSection getDay() {

@@ -17,7 +17,7 @@ public class Day extends ProjectBase {
     private final List<String> lore;
 
     public Day(int index) {
-        getter = new ConfigGetter(index);
+        getter = new ConfigGetter().search(index);
         item = new ItemStack(getter.getItem(), getter.getAmount());
         meta = item.getItemMeta();
         lore = new ArrayList<>(getter.getLore());
