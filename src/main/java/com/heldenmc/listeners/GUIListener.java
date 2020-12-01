@@ -1,8 +1,10 @@
 package com.heldenmc.listeners;
 
 import com.heldenmc.calendar.AbstractGUI;
+import com.heldenmc.config.ConfigGetter;
 import com.heldenmc.config.UserFactory;
 import com.heldenmc.utils.Utilities;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,10 +15,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class GUIListener implements Listener {
 
@@ -36,10 +37,24 @@ public class GUIListener implements Listener {
             if (action != null) {
                 if ((Utilities.calc(factory.getInitialTime(), factory.getPlayTime()) > 30)
                 && !factory.isSlotUsed(event.getSlot())) {
+                    if (!checkDate(new ConfigGetter().search(event.getSlot()).getDay().getName())) {
+                        player.sendMessage("You cannot open that day yet!");
+                        return;
+                    }
                     action.click(player);
                     factory.setSlotUsed(event.getSlot(), true);
                 }
             }
+        }
+    }
+
+    public boolean checkDate(String key) {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return fmt.format(new Date()).equals(fmt.parse(key));
+        } catch (ParseException ex) {
+            Bukkit.getLogger().severe(ex.getMessage());
+            return false;
         }
     }
 
