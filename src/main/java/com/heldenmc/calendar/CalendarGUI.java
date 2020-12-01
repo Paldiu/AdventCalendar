@@ -30,7 +30,7 @@ public class CalendarGUI {
         gui.setItem(26, new ItemStack(Material.GREEN_STAINED_GLASS_PANE, 1));
 
         for (int x = 19; x < 26; x++) {
-            Day day = new Day(x);
+            Day day = new Day(x - 1);
             gui.setItem(x, new ItemStack(Material.PAPER, 1), onClick -> {
                 inv.setItem(firstEmpty, day.getItem());
                 day.runCommand(player);
