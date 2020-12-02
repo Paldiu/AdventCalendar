@@ -51,7 +51,7 @@ public class GUIListener implements Listener {
     public boolean checkDate(String key) {
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            return fmt.format(new Date()).equals(fmt.parse(key));
+            return new Date().after(fmt.parse(key));
         } catch (ParseException ex) {
             Bukkit.getLogger().severe(ex.getMessage());
             return false;
