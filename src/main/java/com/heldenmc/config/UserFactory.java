@@ -1,30 +1,33 @@
 package com.heldenmc.config;
 
 import com.heldenmc.utils.ProjectBase;
+import com.heldenmc.utils.Utilities;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
 import java.util.UUID;
 
 public class UserFactory extends ProjectBase {
     private final Player player;
     private final UUID uuid;
     private final String name;
+    private final long startTime;
     private long playTime;
 
     public UserFactory(Player player) {
         this.player = player;
         this.uuid = player.getUniqueId();
         this.name = player.getName();
-        this.playTime = System.currentTimeMillis();
+        this.startTime = System.currentTimeMillis();
     }
 
     public UserFactory(UUID uuid) {
-        this.player = (Player)Bukkit.getOfflinePlayer(uuid);
+        this.player = Bukkit.getPlayer(uuid);
         this.uuid = uuid;
-        this.name = Bukkit.getOfflinePlayer(uuid).getName();
-        this.playTime = System.currentTimeMillis();
+        this.name = Bukkit.getPlayer(uuid).getName();
+        this.startTime = System.currentTimeMillis();
     }
 
     public ConfigurationSection get() {
@@ -39,9 +42,18 @@ public class UserFactory extends ProjectBase {
         return get().getLong("joined");
     }
 
+    public final void save() throws IOException {
+        plugin.users.save();
+    }
+
     public void updatePlaytime(long time) {
-        get().set("playtime", time);
-        playTime = time;
+        try {
+            playTime = time;
+            get().set("playtime", time);
+            save();
+        } catch (IOException ex) {
+            Bukkit.getLogger().severe(ex.getMessage());
+        }
     }
 
     public boolean check() {
@@ -51,7 +63,8 @@ public class UserFactory extends ProjectBase {
     }
 
     protected ConfigurationSection getUsers() {
-        return plugin.config.getConfigurationSection("users");
+
+        return plugin.users.getConfigurationSection("users");
     }
 
     protected void create() {
@@ -81,6 +94,6 @@ public class UserFactory extends ProjectBase {
     }
 
     public long getPlayTime() {
-        return playTime;
+        return Utilities.playTime.get(player);
     }
 }

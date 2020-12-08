@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.heldenmc</groupId>
     <artifactId>AdventCalendar</artifactId>
-    <version>1.0.0-R0.1-SNAPSHOT</version>
+    <version>1.1.0-RELEASE</version>
     <packaging>jar</packaging>
 
     <build>
@@ -13,8 +13,16 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>15</source>
-                    <target>15</target>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <outputDirectory>C:\Users\Samantha\IdeaProjects\DEBUG SERVER\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

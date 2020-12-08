@@ -1,4 +1,5 @@
 com\heldenmc\calendar\AbstractGUI.class
+com\heldenmc\utils\Utilities$DateFormat.class
 com\heldenmc\calendar\GUI.class
 com\heldenmc\config\ConfigGetter.class
 com\heldenmc\calendar\Command_adventcalendar.class

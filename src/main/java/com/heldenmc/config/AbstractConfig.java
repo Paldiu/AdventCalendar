@@ -1,5 +1,6 @@
 package com.heldenmc.config;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -147,11 +148,13 @@ public abstract class AbstractConfig {
      * Called when a file is created.
      */
     public void create() {
+        Bukkit.getLogger().info("File created!");
     }
 
     /**
      * Called when then file is reloaded
      */
     public void onReload() {
+        Bukkit.getLogger().info("The plugin configuration has been reloaded!");
     }
 }

@@ -35,14 +35,12 @@ public class GUIListener implements Listener {
             AbstractGUI gui = AbstractGUI.getInvByUUID().get(invUUID);
             AbstractGUI.GUIAction action = gui.getActions().get(event.getSlot());
             if (action != null) {
-                if ((Utilities.calc(factory.getInitialTime(), factory.getPlayTime()) > 30)
-                && !factory.isSlotUsed(event.getSlot())) {
-                    if (!checkDate(new ConfigGetter().search(event.getSlot()).getDay().getName())) {
-                        player.sendMessage("You cannot open that day yet!");
-                        return;
-                    }
+                if ((Utilities.calc(factory.getInitialTime(), factory.getPlayTime()) > 30)) {
                     action.click(player);
                     factory.setSlotUsed(event.getSlot(), true);
+                } else {
+                    player.sendMessage("You have not played long enough to warrant usage of the calendar!");
+                    return;
                 }
             }
         }
@@ -55,23 +53,6 @@ public class GUIListener implements Listener {
         } catch (ParseException ex) {
             Bukkit.getLogger().severe(ex.getMessage());
             return false;
-        }
-    }
-
-    public void onOpen(InventoryOpenEvent event) {
-        if (!(event.getPlayer() instanceof Player)) { return; }
-
-        Player player = (Player) event.getPlayer();
-        UserFactory factory = new UserFactory(player);
-        UUID pID = player.getUniqueId();
-        UUID invUUID = AbstractGUI.getOpenInvs().get(pID);
-        if (invUUID != null) {
-            AbstractGUI gui = AbstractGUI.getInvByUUID().get(invUUID);
-            for (int x = 0; x < 27; x++) {
-                if (factory.isSlotUsed(x)) {
-                    gui.getInventory().setItem(x, new ItemStack(Material.MAP, 1));
-                }
-            }
         }
     }
 

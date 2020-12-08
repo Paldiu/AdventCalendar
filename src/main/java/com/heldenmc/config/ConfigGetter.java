@@ -1,6 +1,8 @@
 package com.heldenmc.config;
 
 import com.heldenmc.utils.ProjectBase;
+import com.heldenmc.utils.Utilities;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
@@ -18,7 +20,7 @@ public class ConfigGetter extends ProjectBase {
         calendar = plugin.config.getConfigurationSection("calendar");
     }
 
-    public ConfigGetter search(int index) {
+    public ConfigGetter search(int index) throws IndexOutOfBoundsException {
         this.index = index;
         return this;
     }
@@ -36,17 +38,61 @@ public class ConfigGetter extends ProjectBase {
         return getCalendar().getConfigurationSection(keys.get(index));
     }
 
+    public String getDated() {
+        return StringUtils.split(getDay().getCurrentPath(), ".")[1];
+    }
+
+    public String getMonth() {
+        return new Utilities.DateFormat(getDated()).getMonth();
+    }
+
+    public String getFormattedDate() {
+        Utilities.DateFormat format = new Utilities.DateFormat(getDated());
+        StringBuilder sb = new StringBuilder();
+        sb.append(format.getMonth())
+                .append(" ");
+
+        switch (format.getDay()) {
+            case "1":
+            case "21":
+            case "31":
+                sb.append(format.getDay() + "st");
+                break;
+
+            case "2":
+            case "22":
+                sb.append(format.getDay() + "nd");
+                break;
+
+            case "3":
+            case "23":
+                sb.append(format.getDay() + "rd");
+                break;
+
+            default:
+                sb.append(format.getDay() + "th");
+                break;
+        }
+
+        return sb.toString();
+    }
+
     public ConfigurationSection getEnchants() {
+        if (!getDay().isConfigurationSection("enchants")) {
+            getDay().createSection("enchants");
+        }
         return getDay().getConfigurationSection("enchants");
     }
 
     public Set<String> enchantmentSet() {
-        return getEnchants().getKeys(false);
+        if (getEnchants() != null) {
+            return getEnchants().getKeys(false);
+        } else return new HashSet<>();
     }
 
     public Map<Enchantment, Integer> enchantmentMap() {
         if (enchantmentSet().isEmpty() || enchantmentSet() == null) {
-            return null;
+            return new HashMap<>();
         }
         Map<Enchantment, Integer> map = new HashMap<>();
         enchantmentSet().forEach(key -> {
@@ -79,6 +125,11 @@ public class ConfigGetter extends ProjectBase {
             if (command.contains("%player%") && (sender instanceof Player)) {
                 command.replace("%player%", sender.getName());
             }
+
+            if (command.contains("%date%")) {
+                command.replace("%date%", getFormattedDate());
+            }
+
             temp.add(command);
         });
         return temp;

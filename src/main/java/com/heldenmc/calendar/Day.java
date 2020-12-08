@@ -2,6 +2,8 @@ package com.heldenmc.calendar;
 
 import com.heldenmc.config.ConfigGetter;
 import com.heldenmc.utils.ProjectBase;
+import com.heldenmc.utils.Utilities;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -20,17 +22,34 @@ public class Day extends ProjectBase {
         getter = new ConfigGetter().search(index);
         item = new ItemStack(getter.getItem(), getter.getAmount());
         meta = item.getItemMeta();
-        lore = new ArrayList<>(getter.getLore());
+        lore = new ArrayList<>();
+        if (!getter.getLore().isEmpty() || getter.getLore() != null) {
+            getter.getLore().forEach(lorem -> {
+                lore.add(Utilities.colorize(lorem));
+            });
+        }
 
-        meta.setDisplayName(getter.getName());
+        meta.setDisplayName(Utilities.colorize(getter.getName()));
         meta.setLore(lore);
-        if (!getter.enchantmentMap().isEmpty()) {
+        if (!getter.enchantmentMap().isEmpty() || getter.enchantmentMap() != null) {
             getter.enchantmentMap().forEach((enchantment, integer) -> {
-                meta.addEnchant(enchantment, integer, false);
+                if (enchantment != null) {
+                    meta.addEnchant(enchantment, integer, false);
+                }
             });
         }
         item.setItemMeta(meta);
     }
+
+    public String getDay() {
+        return getter.getDay().getCurrentPath().split("\\.")[1];
+    }
+
+    public String getFormatDay() {
+        return getter.getFormattedDate();
+    }
+
+    public String getMonth() { return getter.getMonth(); }
 
     public ItemStack getItem() {
         return item;

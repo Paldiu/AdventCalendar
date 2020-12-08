@@ -1,7 +1,7 @@
 users:
   c8e5af82-6aba-4dd7-83e8-474381380cc9:
     name: Paldiu
-    uuid: c8e5af82-6aba-4dd7-83e8-474381380cc9
+    uuid: 'c8e5af82-6aba-4dd7-83e8-474381380cc9'
     joined: 1606762024691
     playtime: 1606762028692
     0: false

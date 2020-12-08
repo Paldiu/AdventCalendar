@@ -1,5 +1,6 @@
 package com.heldenmc.calendar;
 
+import com.heldenmc.utils.ProjectBase;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public abstract class AbstractGUI implements InventoryHolder, Listener {
+public abstract class AbstractGUI extends ProjectBase implements InventoryHolder, Listener {
     private final Inventory INV;
     private final Map<Integer, GUIAction> ACTIONS;
     private final UUID uuid;
@@ -60,6 +61,11 @@ public abstract class AbstractGUI implements InventoryHolder, Listener {
     public final void open(@NotNull Player player) {
         player.openInventory(INV);
         openInvs.put(player.getUniqueId(), getUUId());
+    }
+
+    public final void close(@NotNull Player player) {
+        player.closeInventory();
+        openInvs.remove(player.getUniqueId());
     }
 
     public final void delete() {

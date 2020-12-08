@@ -2,7 +2,7 @@
 ## You may change these to any material name, so long as it remains in SCREAMING_SNAKE_CASE.
 ## Materials which contain more than one word for its name must be separated by an UNDERSCORE
 ## Example: CHISELED_STONE_BRICK_STAIRS
-
+calendar-name: '&cA&ad&cv&ae&cn&at &cC&aa&cl&ae&cn&ad&ca&ar'
 calendar:
   01/12/2020:
     name: '&3Colored Name Support'
@@ -27,6 +27,94 @@ calendar:
     commands:
     - 'lp user %player% permission settemp permissable.node true 24H'
   03/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  04/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  05/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  06/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  07/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  08/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  09/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  10/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  11/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  12/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  13/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  14/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  15/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  16/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  17/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  18/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  19/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  20/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  21/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  22/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  23/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  24/12/2020:
+    name: '&4This is important'
+    item: LEATHER_BOOTS
+    amount: 1
+  25/12/2020:
     name: '&4This is important'
     item: LEATHER_BOOTS
     amount: 1
